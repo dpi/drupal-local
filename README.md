@@ -67,7 +67,7 @@ drush sql-dump --result-file=../sql/init/dump.sql
 
 The dump will be automatically imported if you `docker-compose down` then
 restart the application. The app will take a few extra seconds to be ready. Tail
-the database log with `docker-compose logs -f db` to track progress. 
+the database log with `docker-compose logs -f db` to track progress.
 
 ## Mailhog
 
@@ -80,4 +80,33 @@ Mailhog is accessible at https://localhost/mailhog/
 
 ## Traefik
 
-Dashboard is accessible at https://localhost/traefik/ 
+Dashboard is accessible at https://localhost/traefik/
+
+# Development
+
+## PHPStan
+
+Optionally customise PHPStan configuration with
+`cp phpstan.neon.dist phpstan.neon`. The .dist file will be used by default.
+
+```bash
+phpstan analyse
+```
+
+## PHPCS
+
+Optionally customise PHPCS configuration with
+`cp phpcs.xml.dist phpcs.xml`. The .dist file will be used by default.
+
+```bash
+phpcs
+```
+
+## PHPUnit
+
+Optionally customise PHPUnit configuration with
+`cp phpunit.xml.dist phpunit.xml`. The .dist file will be used by default.
+
+```bash
+phpunit
+```
