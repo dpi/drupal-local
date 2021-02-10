@@ -53,3 +53,7 @@ as `sendmail_path` is [configured][sendmail-php-ini].
 Mailhog is accessible at https://localhost/mailhog/
 
  [sendmail-php-ini]: https://github.com/skpr/containers/blob/master/php/base/conf.d/50_overrides.ini
+
+## Traefik
+
+Dashboard is accessible at https://localhost/traefik/ 
