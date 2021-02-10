@@ -41,6 +41,10 @@ Dump the MySQL database from the PHPCLI container so the setup can be restarted.
 drush sql-dump --result-file=../sql/init/dump.sql
 ```
 
+The dump will be automatically imported if you `docker-compose down` then
+restart the application. The app will take a few extra seconds to be ready. Tail
+the database log with `docker-compose logs -f db` to track progress. 
+
 ## Mailhog
 
 Mailhog will capture emails sent by Drupal. There is no need to configure Drupal
