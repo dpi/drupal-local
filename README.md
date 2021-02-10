@@ -27,7 +27,8 @@ drush si standard -y
 
 ```bash
 brew install mkcert nss
-mkcert -cert-file=certificates/localhost.pem -key-file=certificates/localhost-key.pem localhost
+# Replace 'localhost' with alternative hostname, if desired.
+mkcert -cert-file=certificates/primary.pem -key-file=certificates/primary-key.pem localhost
 mkcert -install
 ```
 
