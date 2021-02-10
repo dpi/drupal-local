@@ -6,7 +6,7 @@ This setup is exclusively for local development only.
 
  1. `cp .env.dist .env` and add values.
  2. `composer install`
- 3. Install Certificates, see below.
+ 3. Install Certificates, see _Local TLS_ section below.
  4. Optionally copy and remove `dist.` prefix from settings files.
  5. `docker-compose up -d`
 
@@ -43,7 +43,8 @@ drush config:import
 
 ## Local TLS
 
-[Why local HTTPS][local-https]? Just because! Also Secure Cookies! And other things probably.
+[Why local HTTPS][local-https]? Just because! Also Secure Cookies! And other
+things probably.
 
 ```bash
 brew install mkcert nss
@@ -51,6 +52,8 @@ brew install mkcert nss
 mkcert -cert-file=certificates/primary.pem -key-file=certificates/primary-key.pem localhost
 mkcert -install
 ```
+
+More certificates can be defined in `traefik/config/certificates.yaml`.
 
  [local-https]: https://web.dev/how-to-use-local-https/
 
