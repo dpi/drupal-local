@@ -1,0 +1,85 @@
+{
+    "name": "dpi/drupal-local",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.9",
+        "cweagans/composer-patches": "^1",
+        "drupal/admin_toolbar": "^3.0",
+        "drupal/cache_control_override": "1.x-dev",
+        "drupal/core": "^9.2",
+        "drupal/core-composer-scaffold": "^9.1",
+        "drupal/core-project-message": "^9.1",
+        "drupal/redis": "1.x-dev",
+        "drush/drush": "^10",
+        "mglaman/phpstan-drupal": "^0.12.0@dev",
+        "phpspec/prophecy-phpunit": "^2",
+        "phpstan/phpstan": "^0.12.0@dev",
+        "phpstan/phpstan-deprecation-rules": "^0.12.0@dev"
+    },
+    "require-dev": {
+        "drupal/core-dev": "9.2.x-dev"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "sort-packages": true,
+        "bin-dir": "bin/",
+        "platform": {
+            "php": "7.4.999999"
+        },
+        "preferred-install": {
+            "drupal/core": "source",
+            "dpi/*": "source"
+        }
+    },
+    "extra": {
+        "patches-file": "composer.patches.json",
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "app/"
+            }
+        },
+        "installer-paths": {
+            "app/core": [
+                "type:drupal-core"
+            ],
+            "app/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "app/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "app/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "app/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "app/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "app/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "app/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        }
+    }
+}

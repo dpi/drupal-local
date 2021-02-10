@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="dpi">
+    <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal"/>
+
+    <file>./app/modules/extra</file>
+
+    <arg name="extensions" value="inc,install,module,php,profile,test,theme,yml"/>
+    <arg name="report" value="full"/>
+</ruleset>

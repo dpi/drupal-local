@@ -1,0 +1,9 @@
+app/*
+bin/*
+certificates/*
+config/*
+dockerfiles/*
+drush/*
+sql/*
+traefik/*
+vendor/*

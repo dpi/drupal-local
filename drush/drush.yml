@@ -1,0 +1,5 @@
+# See also example.drush.yml in the Drush repo:
+drush:
+options:
+  root: '/data/app'
+  uri: '${env.BASE_URI}'

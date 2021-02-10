@@ -1,0 +1,19 @@
+parameters:
+  level: 6
+  paths:
+    - app/modules/extra/
+  fileExtensions:
+    - module
+    - profile
+    - theme
+  reportUnmatchedIgnoredErrors: false
+  excludes_analyse:
+    - *Test.php
+    - *TestBase.php
+    - *ServiceProvider.php
+  # Need customRulesetUsed to turn on 'includes'.
+  customRulesetUsed: true
+
+includes:
+  - vendor/mglaman/phpstan-drupal/extension.neon
+  - vendor/phpstan/phpstan-deprecation-rules/rules.neon

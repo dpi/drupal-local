@@ -1,0 +1,8 @@
+app/*
+bin/*
+certificates/*
+config/*
+sql/*
+vendor/*
+.idea/
+.idea-dist/

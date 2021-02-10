@@ -1,0 +1,1 @@
+FROM skpr/php-cli:7.4-1.x-dev AS php-cli

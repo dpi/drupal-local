@@ -1,0 +1,1 @@
+FROM skpr/nginx:1.x-dev AS nginx

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        beStrictAboutTestsThatDoNotTestAnything="true"
+        beStrictAboutOutputDuringTests="true"
+        beStrictAboutChangesToGlobalState="true"
+        bootstrap="app/core/tests/bootstrap.php"
+        cacheResult="false"
+        colors="true"
+        failOnWarning="true"
+        printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory>./includes</directory>
+      <directory>./lib</directory>
+      <directory>./modules</directory>
+      <directory>../modules</directory>
+      <directory>../sites</directory>
+    </include>
+    <exclude>
+      <directory>./modules/*/src/Tests</directory>
+      <directory>./modules/*/tests</directory>
+      <directory>../modules/*/src/Tests</directory>
+      <directory>../modules/*/tests</directory>
+      <directory>../modules/*/*/src/Tests</directory>
+      <directory>../modules/*/*/tests</directory>
+    </exclude>
+  </coverage>
+
+  <php>
+    <ini name="error_reporting" value="32767"/>
+    <ini name="memory_limit" value="-1"/>
+    <env name="SIMPLETEST_BASE_URL" value="http://nginx:8080"/>
+    <env name="SIMPLETEST_DB" value="mysql://local:local@db/local"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="app/sites/default/files"/>
+    <env name="BROWSERTEST_OUTPUT_FILE" value="app/test-output.html"/>
+    <env name="MINK_DRIVER_ARGS_WEBDRIVER" value="[&quot;chrome&quot;, null, &quot;http://selenium:4444/wd/hub&quot;]"/>
+  </php>
+
+  <testsuites>
+    <testsuite name="unit">
+      <file>./tests/TestSuites/UnitTestSuite.php</file>
+    </testsuite>
+    <testsuite name="kernel">
+      <file>./tests/TestSuites/KernelTestSuite.php</file>
+    </testsuite>
+    <testsuite name="functional">
+      <file>./tests/TestSuites/FunctionalTestSuite.php</file>
+    </testsuite>
+    <testsuite name="functional-javascript">
+      <file>./tests/TestSuites/FunctionalJavascriptTestSuite.php</file>
+    </testsuite>
+    <testsuite name="build">
+      <file>./tests/TestSuites/BuildTestSuite.php</file>
+    </testsuite>
+  </testsuites>
+
+  <listeners>
+    <listener class="\Drupal\Tests\Listeners\DrupalListener">
+        </listener>
+  </listeners>
+</phpunit>
