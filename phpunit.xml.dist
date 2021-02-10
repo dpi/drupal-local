@@ -31,6 +31,8 @@
   <php>
     <ini name="error_reporting" value="32767"/>
     <ini name="memory_limit" value="-1"/>
+    <!-- Allow code to execute conditionally by whether executor is PHPUnit -->
+    <const name="BOOTSTRAP_IS_PHPUNIT" value="true"/>
     <env name="SIMPLETEST_BASE_URL" value="http://nginx:8080"/>
     <env name="SIMPLETEST_DB" value="mysql://local:local@db/local"/>
     <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="app/sites/default/files"/>
