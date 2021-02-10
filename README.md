@@ -31,6 +31,16 @@ cp ./app/sites/default/dist.services.redis.yml ./app/sites/default/services.redi
 drush cr
 ```
 
+### Configuration Export/Import
+
+Config YAML will be exported to `./config/`, alternatively use MySQL dump and
+auto restoration per below.
+
+```bash
+drush config:export
+drush config:import
+```
+
 ## Local TLS
 
 [Why local HTTPS][local-https]? Just because! Also Secure Cookies! And other things probably.
