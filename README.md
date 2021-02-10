@@ -21,6 +21,16 @@ docker-compose run php-cli bash
 drush si standard -y
 ```
 
+### Redis
+
+```bash
+# Enable Redis before copying files because new services depend on Redis.module.
+drush en redis
+cp ./app/sites/default/dist.settings.redis.php ./app/sites/default/settings.redis.php
+cp ./app/sites/default/dist.services.redis.yml ./app/sites/default/services.redis.php
+drush cr
+```
+
 ## Local TLS
 
 [Why local HTTPS][local-https]? Just because! Also Secure Cookies! And other things probably.

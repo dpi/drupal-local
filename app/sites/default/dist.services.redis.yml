@@ -1,0 +1,19 @@
+services:
+  cache_tags.invalidator.checksum:
+    class: Drupal\redis\Cache\RedisCacheTagsChecksum
+    arguments: ['@redis.factory']
+    tags:
+      - { name: cache_tags_invalidator }
+
+  lock:
+    class: Drupal\Core\Lock\LockBackendInterface
+    factory: ['@redis.lock.factory', get]
+
+  lock.persistent:
+    class: Drupal\Core\Lock\LockBackendInterface
+    factory: ['@redis.lock.factory', get]
+    arguments: [true]
+
+  flood:
+    class: Drupal\Core\Flood\FloodInterface
+    factory: ['@redis.flood.factory', get]

@@ -1,13 +1,13 @@
 <?php
 
-declare(strict_types = 1);
-
 /**
  * @file
  * Useful settings.
  *
  * Rename this file or copy contents to settings.local.php.
  */
+
+declare(strict_types = 1);
 
 // More services:
 //$settings['container_yamls'][] = __DIR__ . '/services.local.yml';

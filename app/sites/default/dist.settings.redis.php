@@ -4,6 +4,8 @@
 
 declare(strict_types = 1);
 
+$settings['container_yamls'][] = __DIR__ . '/services.redis.yml';
+
 $settings['cache']['default'] = 'cache.backend.redis';
 $settings['redis.connection'] = [
   'host' => 'redis',

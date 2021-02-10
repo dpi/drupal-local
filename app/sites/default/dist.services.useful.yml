@@ -1,0 +1,11 @@
+# Useful services to enable for local development.
+parameters:
+  twig.config:
+    debug: true
+    auto_reload: null
+    cache: true
+  http.response.debug_cacheability_headers: true
+
+services:
+  cache.backend.null:
+    class: Drupal\Core\Cache\NullBackendFactory
