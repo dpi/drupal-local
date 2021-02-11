@@ -2,6 +2,17 @@ Local Drupal Development
 
 This setup is exclusively for local development only.
 
+# Setup
+
+This setup assumes you have the following:
+
+ * On Mac (Tested with Mojave)
+ * This repository is cloned locally.
+ * Git
+ * Docker for Mac
+ * Composer
+ * Brew
+
 # Usage
 
  1. `cp .env.dist .env` and add values.
@@ -26,7 +37,7 @@ drush si standard -y
 Want to use a hostname other than localhost, such as DOMAIN.localhost? (automat-
 ically works with Firefox / Chrome) Or any others with editing host file?
 
- 1. Update URLs and hostnames in .env files.
+ 1. Update URLs and hostnames in `.env` file.
  2. Generate certificates for new hostname (See _Local TLS_).
  3. `docker-compose up -d`
 
