@@ -16,14 +16,14 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-project-message": "^9.1",
         "drupal/redis": "1.x-dev",
-        "drush/drush": "^10",
+        "drush/drush": "^10"
+    },
+    "require-dev": {
+        "drupal/core-dev": "9.2.x-dev",
         "mglaman/phpstan-drupal": "^0.12.0@dev",
         "phpspec/prophecy-phpunit": "^2",
         "phpstan/phpstan": "^0.12.0@dev",
         "phpstan/phpstan-deprecation-rules": "^0.12.0@dev"
-    },
-    "require-dev": {
-        "drupal/core-dev": "9.2.x-dev"
     },
     "conflict": {
         "drupal/drupal": "*"
