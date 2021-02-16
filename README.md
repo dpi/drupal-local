@@ -32,7 +32,14 @@ docker-compose run php-cli bash
 drush si standard -y
 ```
 
-#### Alternative hostnames
+### Common tasks
+
+```bash
+# Set Claro as admin theme:
+drush theme:enable claro && drush config:set system.theme admin claro -y && drush cr
+```
+
+## Alternative hostnames
 
 Want to use a hostname other than localhost, such as DOMAIN.localhost? (automat-
 ically works with Firefox / Chrome) Or any others with editing host file?
