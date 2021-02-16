@@ -1,3 +1,4 @@
+# Image source: https://github.com/skpr/containers/tree/master/php/cli
 FROM skpr/php-cli:7.4-1.x-xdebug AS php-cli-xdebug
 
 USER root
