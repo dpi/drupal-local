@@ -6,3 +6,7 @@ sql/*
 vendor/*
 .idea/
 .idea-dist/
+
+# From Drupal scaffold.
+.editorconfig
+.gitattributes

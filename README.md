@@ -15,6 +15,7 @@ This setup assumes you have the following:
 
 # Usage
 
+ 0. `composer create-project dpi/drupal/local`
  1. `cp .env.dist .env` and add values.
  2. `composer install`
  3. Install Certificates, see _Local TLS_ section below.

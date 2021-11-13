@@ -8,22 +8,24 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.9",
+        "composer/installers": "^2",
         "cweagans/composer-patches": "^1",
         "drupal/admin_toolbar": "^3.0",
         "drupal/cache_control_override": "1.x-dev",
-        "drupal/core": "^9.2",
-        "drupal/core-composer-scaffold": "^9.1",
-        "drupal/core-project-message": "^9.1",
+        "drupal/core": "~9.3.0",
+        "drupal/core-composer-scaffold": "~9.3.0",
+        "drupal/core-project-message": "~9.3.0",
         "drupal/redis": "1.x-dev",
-        "drush/drush": "^10"
+        "drush/drush": "^11@rc"
     },
     "require-dev": {
-        "drupal/core-dev": "9.2.x-dev",
-        "mglaman/phpstan-drupal": "^0.12.0@dev",
+        "davidrjonas/composer-lock-diff": "^1.6",
+        "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
+        "drupal/core-dev": "9.3.x-dev",
+        "mglaman/phpstan-drupal": "^1",
         "phpspec/prophecy-phpunit": "^2",
-        "phpstan/phpstan": "^0.12.0@dev",
-        "phpstan/phpstan-deprecation-rules": "^0.12.0@dev"
+        "phpstan/phpstan": "^1.0",
+        "phpstan/phpstan-deprecation-rules": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -33,7 +35,7 @@
         "sort-packages": true,
         "bin-dir": "bin/",
         "platform": {
-            "php": "7.4.999999"
+            "php": "8.0.999999"
         },
         "preferred-install": {
             "drupal/core": "source",
