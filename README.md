@@ -4,10 +4,11 @@ This setup is exclusively for local development only.
 
 # Setup
 
-This setup assumes you have the following:
+This setup has been tested with :
 
- * On Mac (Tested with Mojave)
- * This repository is cloned locally.
+ * Apple Silicon M1
+ * macOS Monterey
+ * Local clone
  * Git
  * Docker for Mac
  * Composer
@@ -29,7 +30,7 @@ Drupal is accessible at https://localhost/
 ### Installation
 
 ```bash
-docker-compose run php-cli bash
+docker-compose exec php-cli bash
 drush si standard -y
 ```
 
@@ -137,4 +138,40 @@ Optionally customise PHPUnit configuration with
 
 ```bash
 phpunit
+```
+
+## Blackfire
+
+Define client and server ID and tokens in .env.
+
+### Web profiling
+
+#### Browser extension
+
+Enable the browser extension as normal.
+
+Navigate to the page you wish to profile, and click 'Profile!' button.
+
+Note: does not work properly if you're using Firefox container tabs. Use a
+container-less tab when profiling in Firefox.
+
+#### Docker compose
+
+`docker-compose exec blackfire blackfire curl http://nginx:8080/`
+
+#### Blackfire CLI app
+
+Blackfire client (`blackfire`) is built into the PHP CLI container
+(`Dockerfile-php-cli`):
+
+```
+docker-compose exec php-cli bash
+blackfire curl http://nginx:8080/
+```
+
+### CLI app profiling
+
+```
+docker-compose exec php-cli bash
+blackfire run drush foo
 ```

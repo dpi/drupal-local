@@ -1,31 +1,32 @@
 {
     "name": "dpi/drupal-local",
     "type": "project",
-    "repositories": [
-        {
+    "repositories": {
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
-    ],
+    },
     "require": {
         "composer/installers": "^2",
         "cweagans/composer-patches": "^1",
-        "drupal/admin_toolbar": "^3.0",
-        "drupal/cache_control_override": "1.x-dev",
-        "drupal/core": "~9.3.0",
-        "drupal/core-composer-scaffold": "~9.3.0",
-        "drupal/core-project-message": "~9.3.0",
+        "drupal/admin_toolbar": "^3.1.1",
+        "drupal/core": "^10.1",
+        "drupal/core-composer-scaffold": "^10.1",
+        "drupal/core-project-message": "^10.1",
         "drupal/redis": "1.x-dev",
-        "drush/drush": "^11@rc"
+        "drush/drush": "^11.2.1@rc"
     },
     "require-dev": {
-        "davidrjonas/composer-lock-diff": "^1.6",
+        "davidrjonas/composer-lock-diff": "^1.7",
         "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
-        "drupal/core-dev": "9.3.x-dev",
-        "mglaman/phpstan-drupal": "^1",
+        "drupal/core-dev": "10.0.x-dev",
+        "mglaman/phpstan-drupal": "^1.1.25",
+        "mstrelan/teamcity-html": "dev-main",
         "phpspec/prophecy-phpunit": "^2",
-        "phpstan/phpstan": "^1.0",
-        "phpstan/phpstan-deprecation-rules": "^1.0"
+        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan-deprecation-rules": "^1.1",
+        "rector/rector": "0.14.x-dev"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -35,11 +36,19 @@
         "sort-packages": true,
         "bin-dir": "bin/",
         "platform": {
-            "php": "8.0.999999"
+            "php": "8.1.999999"
         },
         "preferred-install": {
             "drupal/core": "source",
             "dpi/*": "source"
+        },
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
         }
     },
     "extra": {

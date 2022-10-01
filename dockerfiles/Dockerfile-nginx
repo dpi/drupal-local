@@ -1,2 +1,3 @@
 # Image source: https://github.com/skpr/containers/tree/master/nginx/dev
-FROM skpr/nginx:1.x-dev AS nginx
+FROM skpr/nginx-drupal:dev-v2-latest AS nginx
+USER skpr

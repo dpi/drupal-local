@@ -4,7 +4,7 @@
 version: "3"
 services:
   traefik:
-    image: "library/traefik:v2.4"
+    image: "library/traefik:v2.9"
     command:
       - --entrypoints.web.address=:80
       - --entrypoints.traefik.address=:8600
@@ -43,7 +43,7 @@ services:
       - web-internal
       - data-internal
     volumes:
-      - nfsmount:/data
+      - ./:/data
     labels:
       - traefik.enable=true
       - traefik.http.routers.nginx.rule=Host(`${HOSTNAME}`)
@@ -57,42 +57,50 @@ services:
     build:
       dockerfile: dockerfiles/Dockerfile-php-fpm
       context: .
+      args:
+        PHP_VERSION: ${PHP_VERSION}
     volumes:
-      - nfsmount:/data
-
-  php-fpm-xdebug:
-    <<: *php-fpm
-    build:
-      dockerfile: dockerfiles/Dockerfile-php-fpm-xdebug
-      context: .
+      - ./:/data
     environment:
-      PHP_FPM_PORT: 9001
       PHP_IDE_CONFIG: "serverName=${HOSTNAME}"
 
   php-cli: &php-cli
     networks:
       - data-internal
       - web-internal
+#      - web-external
     build:
       dockerfile: dockerfiles/Dockerfile-php-cli
       context: .
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+    command: /bin/bash -c "sleep infinity"
     volumes:
-      - nfsmount:/data
+      - ./:/data
     environment:
       BASE_URI: "${BASE_URI}"
+      BLACKFIRE_CLIENT_ID: "${BLACKFIRE_CLIENT_ID}"
+      BLACKFIRE_CLIENT_TOKEN: "${BLACKFIRE_CLIENT_TOKEN}"
 
   php-cli-xdebug:
     <<: *php-cli
     build:
       dockerfile: dockerfiles/Dockerfile-php-cli-xdebug
       context: .
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+    command: /bin/bash -c "sleep infinity"
     environment:
+      BASE_URI: "${BASE_URI}"
       PHP_IDE_CONFIG: "serverName=${HOSTNAME}"
+      XDEBUG_SESSION: PHPSTORM
 
   db:
     image: mariadb
     networks:
       - data-internal
+    ports:
+      - "${DATABASE_PORT}:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "local"
       MYSQL_DATABASE: "local"
@@ -107,17 +115,28 @@ services:
       - data-internal
 
   blackfire:
-    image: blackfire/blackfire
+    image: blackfire/blackfire:2
     networks:
       - data-internal
+    volumes:
+      - ./:/data
     environment:
       BLACKFIRE_SERVER_ID: "${BLACKFIRE_SERVER_ID}"
       BLACKFIRE_SERVER_TOKEN: "${BLACKFIRE_SERVER_TOKEN}"
+      BLACKFIRE_CLIENT_ID: "${BLACKFIRE_CLIENT_ID}"
+      BLACKFIRE_CLIENT_TOKEN: "${BLACKFIRE_CLIENT_TOKEN}"
 
   selenium:
-    image: selenium/standalone-chrome:3.141.59-oxygen
+    image: seleniarm/standalone-chromium:latest
+    ports:
+      - "${CHROME_PORT:-4444}:4444"
+    shm_size: 2g
     networks:
+      - web-external
+      - web-internal
       - data-internal
+    volumes:
+      - /dev/shm:/dev/shm
 
   mailhog:
     image: mailhog/mailhog
@@ -140,11 +159,3 @@ networks:
     driver: bridge
   data-internal:
     driver: bridge
-
-volumes:
-  nfsmount:
-    driver: local
-    driver_opts:
-      type: nfs
-      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
-      device: ":${PWD}"

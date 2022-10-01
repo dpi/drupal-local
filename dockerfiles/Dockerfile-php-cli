@@ -1,2 +1,12 @@
 # Image source: https://github.com/skpr/containers/tree/master/php/cli
-FROM skpr/php-cli:8.0-1.x-dev AS php-cli
+ARG PHP_VERSION=8.0
+FROM skpr/php-cli:${PHP_VERSION}-dev-v2-latest AS php-cli
+
+USER root
+RUN mkdir -p /tmp/blackfire \
+    && architecture=$(uname -m) \
+    && curl -A "Docker" -L https://blackfire.io/api/v1/releases/cli/linux/$architecture | tar zxp -C /tmp/blackfire \
+    && mv /tmp/blackfire/blackfire /usr/bin/blackfire \
+    && rm -Rf /tmp/blackfire \
+
+USER skpr

@@ -6,6 +6,8 @@ sql/*
 vendor/*
 .idea/
 .idea-dist/
+.phpunit.result.cache
+.env
 
 # From Drupal scaffold.
 .editorconfig

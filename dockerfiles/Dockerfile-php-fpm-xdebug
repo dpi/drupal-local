@@ -1,7 +1,0 @@
-# Image source: https://github.com/skpr/containers/tree/master/php/fpm
-FROM skpr/php-fpm:8.0-1.x-xdebug AS php-fpm-xdebug
-
-USER root
-RUN echo -e "\nblackfire.agent_socket=tcp://blackfire:8707" >> /etc/php/conf.d/01_blackfire.ini
-RUN echo -e "\nxdebug.remote_host=host.docker.internal" >> /etc/php/conf.d/50_dev.ini
-USER skpr
